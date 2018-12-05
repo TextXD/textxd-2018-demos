@@ -1,0 +1,15 @@
+name: textxd-2018-demos
+channels:
+  - conda-forge
+dependencies:
+  - pandas
+  - bokeh
+  - scikit-learn
+  - gensim
+  - numpy
+  - nltk
+  - matplotlib
+  - seaborn
+  - requests
+  - beautifulsoup4
+  - lxml
