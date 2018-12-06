@@ -29,11 +29,13 @@ RUN python3 -c 'import nltk; nltk.download("popular")'
 USER root
 
 RUN apt-get update && \
-	apt-get install -y --no-install-recommends \
-		libapparmor1 \
-		libedit2 \
-		lsb-release \
-		;
+  apt-get install -y --no-install-recommends \
+  libapparmor1 \
+  libedit2 \
+  lsb-release \
+  psmisc \
+  libssl1.0.2 \ 
+  ;
 
 # You can use rsession from rstudio's desktop package as well.
 ARG RSTUDIO_VERSION
