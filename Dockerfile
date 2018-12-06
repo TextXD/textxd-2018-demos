@@ -22,3 +22,6 @@ RUN conda install --quiet --yes \
 
 RUN pip install nbgitpuller && \
   jupyter serverextension enable --py nbgitpuller --sys-prefix
+
+RUN pip install youtube-dl && ln -s /opt/conda/bin/youtube-dl /opt/conda/bin/gdrive-dl
+RUN python3 -c 'import nltk; nltk.download("popular")'
