@@ -57,10 +57,13 @@ RUN RSTUDIO_LATEST=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/r
     && echo $RSTUDIO_VERSION \
     && wget -q http://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
     && dpkg -i rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
-    && rm rstudio-server-*-amd64.deb
+    && rm rstudio-server-*-amd64.deb \
+    &&  echo 'rsession-which-r=/opt/conda/bin/R' >> /etc/rstudio/rserver.conf
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+COPY disable_auth_rserver.conf /etc/rstudio/disable_auth_rserver.conf
 
 USER $NB_USER
 
