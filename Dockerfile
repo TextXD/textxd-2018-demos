@@ -30,12 +30,7 @@ USER root
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  libapparmor1 \
-  libedit2 \
-  lsb-release \
-  psmisc \
-  libssl1.0.2 \ 
-  ;
+  gdebi-core;
 
 # You can use rsession from rstudio's desktop package as well.
 ARG RSTUDIO_VERSION
@@ -43,7 +38,7 @@ RUN RSTUDIO_LATEST=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/r
     && [ -z "$RSTUDIO_VERSION" ] && RSTUDIO_VERSION=$RSTUDIO_LATEST || true \
     && echo $RSTUDIO_VERSION \
     && wget -q http://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
-    && dpkg -i rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
+    && gdebi rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
     && rm rstudio-server-*-amd64.deb
 
 RUN apt-get clean && \
