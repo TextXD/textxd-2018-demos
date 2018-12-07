@@ -60,6 +60,10 @@ RUN RSTUDIO_LATEST=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/r
     && rm rstudio-server-*-amd64.deb \
     &&  echo 'rsession-which-r=/opt/conda/bin/R' >> /etc/rstudio/rserver.conf
 
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  vim emacs nano pico less jq;
+
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
