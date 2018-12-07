@@ -62,7 +62,7 @@ RUN RSTUDIO_LATEST=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/r
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  vim emacs nano pico less jq;
+  vim emacs nano less jq;
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
