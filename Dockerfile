@@ -26,7 +26,7 @@ RUN pip install nbgitpuller && \
 RUN pip install youtube-dl && ln -s /opt/conda/bin/youtube-dl /opt/conda/bin/gdrive-dl
 RUN python3 -c 'import nltk; nltk.download("stopwords"); nltk.download("punkt")'
 
-RUN conda install --yes rstudio
+RUN conda install --yes rstudio --no-update-deps
 
 RUN pip install git+https://github.com/jupyterhub/nbserverproxy.git
 RUN jupyter serverextension enable --sys-prefix --py nbserverproxy
@@ -37,5 +37,6 @@ RUN jupyter nbextension install    --sys-prefix --py nbrsessionproxy
 RUN jupyter nbextension enable     --sys-prefix --py nbrsessionproxy
 
 # The desktop package uses /usr/lib/rstudio/bin
-ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+##ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+ENV PATH="${PATH}:/opt/conda/bin"
 ENV LD_LIBRARY_PATH="/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/lib/R/lib"
