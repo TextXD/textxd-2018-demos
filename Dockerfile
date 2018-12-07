@@ -76,5 +76,5 @@ RUN jupyter nbextension install    --sys-prefix --py nbrsessionproxy
 RUN jupyter nbextension enable     --sys-prefix --py nbrsessionproxy
 
 # The desktop package uses /usr/lib/rstudio/bin
-ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+ENV PATH="${PATH}:/opt/conda/bin"
 ENV LD_LIBRARY_PATH="/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/lib/R/lib"
